@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretraga alarma</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .info { background-color: #d9edf7; }
+        .user { background-color: #fcf8e3; }
+        .deviation { background-color: #f7ecb5; }
+        .stop { background-color: #f2dede; }
+    </style>
+    <script>
+        function filterAlarms() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let majorFilter = document.getElementById("majorFilter").value;
+            let minorFilter = document.getElementById("minorFilter").value;
+            let table = document.getElementById("alarmTable");
+            let rows = table.getElementsByTagName("tr");
+            
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].getElementsByTagName("td");
+                let match = true;
+                
+                if (input && !cells[3].innerText.toLowerCase().includes(input) &&
+                    !cells[4].innerText.toLowerCase().includes(input) &&
+                    !cells[5].innerText.toLowerCase().includes(input)) {
+                    match = false;
+                }
+                
+                if (majorFilter && cells[0].innerText !== majorFilter) {
+                    match = false;
+                }
+                
+                if (minorFilter && cells[1].innerText !== minorFilter) {
+                    match = false;
+                }
+                
+                rows[i].style.display = match ? "" : "none";
+            }
+        }
+
+        function populateFilters() {
+            let table = document.getElementById("alarmTable");
+            let rows = table.getElementsByTagName("tr");
+            let majorSet = new Set();
+            let minorSet = new Set();
+            
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].getElementsByTagName("td");
+                if (cells.length > 1) {
+                    majorSet.add(cells[0].innerText);
+                    minorSet.add(cells[1].innerText);
+                }
+            }
+            
+            let majorFilter = document.getElementById("majorFilter");
+            let minorFilter = document.getElementById("minorFilter");
+            
+            majorFilter.innerHTML = '<option value="">Svi</option>';
+            minorFilter.innerHTML = '<option value="">Svi</option>';
+            
+            majorSet.forEach(value => {
+                let option = document.createElement("option");
+                option.value = value;
+                option.textContent = value;
+                majorFilter.appendChild(option);
+            });
+            
+            minorSet.forEach(value => {
+                let option = document.createElement("option");
+                option.value = value;
+                option.textContent = value;
+                minorFilter.appendChild(option);
+            });
+        }
+        
+        window.onload = populateFilters;
+    </script>
+</head>
+<body>
+    <h2>Pretraga alarma</h2>
+    <input type="text" id="search" onkeyup="filterAlarms()" placeholder="Pretraži...">
+    
+    <label for="majorFilter">Major kod:</label>
+    <select id="majorFilter" onchange="filterAlarms()">
+        <option value="">Svi</option>
+    </select>
+    
+    <label for="minorFilter">Minor kod:</label>
+    <select id="minorFilter" onchange="filterAlarms()">
+        <option value="">Svi</option>
+    </select>
+    
+    <table id="alarmTable">
+        <thead>
+            <tr>
+                <th>Major</th>
+                <th>Minor</th>
+                <th>Level</th>
+                <th>Alarm</th>
+                <th>Opis</th>
+                <th>Radnja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Ovdje će biti umetnuti podaci iz Excel tablice -->
+        </tbody>
+    </table>
+</body>
+</html>
