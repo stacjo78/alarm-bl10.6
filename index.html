@@ -116,7 +116,116 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Ovdje će biti umetnuti podaci iz Excel tablice -->
+            <Major	Minor	Level		 Alarm Information	
+					
+1	6	Info		Alarm Heading	Vmsserver connected {ms}
+				Description	VC communication and data transfer programs are activated.
+				Action	No action required
+1	15	User		Alarm Heading	Cow trapped. {ms}
+				Description	An animal has been trapped in the milking station in accordance with the operator settings, in the PC.
+				Action	If the station is not put in manual mode within 10 minutes, the animal will bereleased.
+1	105	Stop		Alarm Heading	Vmsserver disconnected {ms}
+				Description	VC communication and data transfer programs have been deactivated; there is nocommunication between the milking station and the VC.
+				Action	Troubleshoot the LAN, Ethernet cable and switch/router. VC hostname must be thesame as the provided computer name in the DelPro Gateway.
+1	106	Stop		Alarm Heading	Invalid configuration {ms}
+				Description	Invalid configuration received from VC.
+				Action	Change the configuration in VC. Check the mechanical HW version. If needed, contact Technical Support.
+1	110	User		Alarm Heading	Unknown cow with transponder {transponder}.  {ms}
+				Description	The transponder was not found in the database. The transponder might be broken.The animal may not be registered in DelPro or the reading from the antenna may be wrong.
+				Action	Save the log files and contact Technical Support.
+1	111	Deviation		Alarm Heading	Cow not identified. {ms}
+				Description	The animal could not be identified within the time limit.The level of this alarm is raised in steps when it occurs several times in a row: 2 deviations = User notification, 5 deviations = Stop alarm.
+				Action	If the alarm is recurring, check the ID readers. Check the antennas and station controller.
+1	123	User		Alarm Heading	Cow escaped from MS stall. {ms}
+				Description	The animal left the stall before the gate had automatically opened
+				Action	Check the exit gate, gate sensors, air pressures and the exit gate magnet.
+1	200	User		Alarm Heading	External alarm to milking station {ms}
+				Description	An external device connected to a milking station, has generated an alarm.
+				Action	If the external device is OK, check the cable and connector for a shortcut.
+1	203	Deviation		Alarm Heading	Milking station program was unexpectedly terminated {ms}
+				Description	Milking station program was unexpectedly terminated.
+				Action	Save the log files and contact Technical Support.
+1	204	Info		Alarm Heading	Milking station program was restarted {ms}
+				Description	Milking station program was restarted.
+				Action	No action required.
+1	205	Deviation		Alarm Heading	Milking station power failure {ms}
+				Description	Milking station power failure.
+				Action	The application was automatically restarted. If a regular issue, save the log files and contact Technical Support.
+1	210	Info		Alarm Heading	Self-test success: {maj} . {min} {ms}
+				Description	A self test was run and performed successfully.
+				Action	No action required.
+1	211	Info		Alarm Heading	Self-test failure: {maj} . {min} {ms}
+				Description	A self test was run and failed.
+				Action	The action required shall be according to the problem (error/alarm) that caused the self-test to run. Locate this error/alarm in DelPro and take the relevant action.
+1	212	User		Alarm Heading	Many self tests are performed in a short time
+				Description	Many self tests have been performed in a short time.
+				Action	Check what caused the self-tests to run and see if the machine needs service.
+1	303	User		Alarm Heading	Scheduled cleaning NOT started {ms}
+				Description	A scheduled cleaning was not performed. The milking station was not in Auto mode at the time the cleaning tried to start.
+				Action	No action required.
+1	312	Deviation		Alarm Heading	Unexpected high yield for cup {teatCup}. Expected {expectedYield:yield}, got {yield:yield} {ms}
+				Description	"A teat yield is significantly higher than expected. If the problem occurs frequently, themilk meter may be broken or in need of calibration.
+The level of this alarm is raised in steps when it occurs several times in a row. Count and raise per teat cup: 3 deviations = User notification, 5 deviations = Stop alarm."
+				Action	Check for dirt inside the milk meter. If required, calibrate or replace the milk meter.
+1	315	Deviation		Alarm Heading	Unexpected low yield for cup {teatCup}. Expected {expectedYield:yield}, got {yield:yield} {ms}
+				Description	"A teat yield is significantly lower than expected. If the problem occurs frequently, the milk meter may be broken or in need of calibration.
+The level of this alarm is raised in steps when it occurs several times in a row. Countand raise per teat cup: 3 deviations = User notification, 5 deviations = Stop alarm."
+				Action	Check for dirt inside the milk meter. If required, calibrate or replace the milk meter.
+1	316	User		Alarm Heading	TCA cleaning hasn't finished. {ms}
+				Description	Cleaning of the Teat Cleaning Additive circuit has not finished. No other operations are permitted until it has finished.
+				Action	No action required.
+1	317	Stop		Alarm Heading	Configuration changes requires the milking station to be rebooted
+				Description	Some I/O system changes cannot be made while the milking station is running
+				Action	Restart the milking station.
+1	318	User		Alarm Heading	Idle stall cleaning NOT started {ms}
+				Description	A cleaning was not performed. MS wasn't in Auto mode.
+				Action	Open InControl and start the cleaning.
+1	319	User		Alarm Heading	Milk truck cleaning NOT started {ms}
+				Description	A cleaning was not performed. MS wasn't in Auto mode.
+				Action	Open InControl and start the cleaning.
+1	320	User		Alarm Heading	Cow preset cleaning NOT started {ms}
+				Description	A cleaning was not performed. MS wasn't in Auto mode.
+				Action	Open InControl and start the cleaning.
+1	321	User		Alarm Heading	Divert cleaning NOT started {ms}
+				Description	A cleaning was not performed. MS wasn't in Auto mode.
+				Action	Open InControl and start the cleaning.
+1	322	User		Alarm Heading	External cleaning NOT started {ms}
+				Description	A cleaning was not performed. MS wasn't in Auto mode.                                                                                                                  An external cleaning is triggered from outside of the Milking Station software.
+				Action	Open InControl and start the cleaning.
+1	323	User		Alarm Heading	Manual cleaning NOT started {ms}
+				Description	A cleaning was not finished properly.
+				Action	Open InControl and start the cleaning.
+1	329	User		Alarm Heading	Divert Mode ended by tank cow. The cow is milked
+				Description	Milking station was in Divert Mode when a tank cow was let in. The cow is milked. Divert Mode is ended.
+				Action	No action required. Start Divert mode again if desired.
+1	330	User		Alarm Heading	Divert Mode ended by tank cow. The cow is not milked.
+				Description	Milking station was in Divert Mode when a tank cow was let in. The cow is milked. Divert Mode is ended.
+				Action	No action required. Start Divert mode again if desired.
+1	331	User		Alarm Heading	Divert Mode ended by scheduled cleaning
+				Description	Milking station was in Divert Mode when a cleaning started. Divert Mode was then ended.
+				Action	No action required. Start Divert mode again if desired.
+1	332	User		Alarm Heading	Divert Mode ended by idle stall cleaning
+				Description	Milking station was in Divert Mode when a cleaning started. Divert Mode was then ended.
+				Action	No action required. Start Divert mode again if desired.
+1	333	User		Alarm Heading	Divert Mode ended by milk truck cleaning
+				Description	Milking station was in Divert Mode when a cleaning started. Divert Mode was then ended.
+				Action	No action required. Start Divert mode again if desired.
+1	334	User		Alarm Heading	Divert Mode ended by external cleaning
+				Description	Milking station was in Divert Mode when a cleaning started. Divert Mode was then ended.
+				Action	No action required. Start Divert mode again if desired.
+1	335	User		Alarm Heading	Divert Mode ended by hardware error
+				Description	Milking station was in Divert Mode when a hardware error occurred. Divert Mode was then ended.
+				Action	Attend to the hardware error. It is reported in another alarm. Start Divert mode again if desired.
+1	339	Stop		Alarm Heading	Cleaning failed. Divert Mode ended.
+				Description	The cleaning failed. Milking station was in Divert Mode. Divert Mode was then ended.
+				Action	Determine why the cleaning failed. Re-run the cleaning before milking. Start Divert mode again if desired.
+1	340	Stop		Alarm Heading	Cleaning failed
+				Description	The cleaning failed.
+				Action	Determine why the cleaning failed. Re-run the cleaning before milking.
+1	341	Deviation		Alarm Heading	Cleaning aborted by user
+				Description	The cleaning was aborted by a user.
+				Action	No action required. 
+>
         </tbody>
     </table>
 </body>
